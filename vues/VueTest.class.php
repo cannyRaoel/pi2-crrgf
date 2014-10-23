@@ -6,7 +6,8 @@ class VueTest{
 		Vue::header();
 		Vue::nav();
 		$oTest = new Test();
-		echo $oTest->echoTest();
+		echo $oTest->echoTest()."<br>";
+        echo "test de canny";
 		Vue::footer();
 	}
 }
