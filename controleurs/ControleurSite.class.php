@@ -20,7 +20,7 @@ class ControleurSite extends Controleur{
 			}
 
 			switch ( $_GET['page'] ) {
-				case 'encheres':
+				case 'mes-oeuvres':
 					$this->gererOeuvres();
 					break;
 				

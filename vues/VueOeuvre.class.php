@@ -28,7 +28,7 @@ class VueOeuvre {
 			echo "<section class=\"col-sm-6 col-md-3 \">";
 				echo '
 					
-					<form action="index.php?page=encheres&mode=grille" method="POST">
+					<form action="index.php?page=mes-encheres&mode=grille" method="POST">
 							<fieldset>
 								<legend>Rechercher des oeuvres</legend>
 								
