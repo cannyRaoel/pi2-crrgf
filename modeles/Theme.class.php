@@ -39,61 +39,29 @@ public function __construct($idTheme=0, $sNomTheme=" ")
 	}//fin de la fonction getNomTheme()	
 	
 /*************LES MÉTHODES******************/
-		// public function rechercherNomTheme(){
-		// //Connecter à la base de données
-		// $oConnexion = new MySqliLib();
-		// //Réaliser la requête de recherche par le idProduit	
-		// $sRequete = "SELECT NomTheme FROM themes LEFT JOIN oeuvres
-                 // ON (oeuvres.idTheme= themes.idTheme)";
-		// $bRechercher = false;
+	
+	public function rechercherNomThemeParSonId()
+		{
+		//Connecter à la base de données
+		$oConnexion = new MySqliLib();
+		//Réaliser la requête de recherche d'un nom de technique par son ID
+		$sRequete = "SELECT nomTheme FROM pi2_themes WHERE idTheme=".$this->idTheme.";
+		";
+		//echo $sRequete;
+		//Exécuter la requête
+		$oResult = $oConnexion->executer($sRequete);
+		//Récupérer le tableau des enregistrements s'il existe
+		$aThemes = $oConnexion->recupererTableau($oResult);
 		
-		
-		// //Exécuter la requête
-		// $oResult = $oConnexion->executer($sRequete);
-		// //Récupérer le tableau des enregistrements s'il existe
-		// $aThemes = $oConnexion->recupererTableau($oResult);
-		
-		// echo "<br/>";
-		// //var_dump($aThemes);
-				
-		// if(empty($aThemes)!= true)
-		// {			
-		// /*	for($iEnreg=0; $iEnreg<count($aThemes);$iEnreg++)*/
-			// //{
-			// //Affecter les propriétés de l'objet en cours avec les valeurs
-			// /*$this->setIdTheme($aThemes[0]['idTheme']);*/
+		if(empty($aThemes[0]) != true){
+			//Affecter les propriétés de l'objet en cours avec les valeurs
 			
+			//$this->setIdTheme($aThemes[0]['idTheme']);
+			$this->setNomTheme($aThemes[0]['nomTheme']);
 			
-			// $this->setNomTheme($aThemes[1]['NomTheme']);
-			// //echo $aThemes[$iEnreg]['NomTheme'];
-			// $bRechercher=true;		
-			// //}
-		// }	
-			// return $bRechercher;
-	 // }//fin de la fonction rechercherDesOeuvresParMotCle()
+			$bRechercherTheme=true;	
+		}
+		return $bRechercherTheme;
+	}//fin de la fonction rechercherNomThemeParSonId()		
 		
-		
-
-		
-// public function rechercherUnThemeParIdOeuvre(){		
-		// //Connecter à la base de données
-		// $oConnexion = new MySqliLib();
-		// //Réaliser la requête de recherche par le idProduit	
-		// $sRequete = "SELECT * FROM medias WHERE idProduit = ".$this->iProduit;
-		
-		// $bRechercher = false;
-		// //Exécuter la requête
-		// $oResult = $oConnexion->executer($sRequete);
-		
-		// //Récupérer le tableau des enregistrements s'il existe
-		// $aMedias = $oConnexion->recupererTableau($oResult);
-		// if(empty($aMedias[0]) != true){
-			// //Affecter les propriétés de l'objet en cours avec les valeurs
-			// $this->setNoMedia($aMedias[0]['idMedia']);
-			// $this->setUrlMedia($aMedias[0]['sUrlMedia']);
-			// $this->setNoProduit($aMedias[0]['idProduit']);
-			// $bRechercher=true;	
-		// }
-		// return $bRechercher;
-	// }//fin de la fonction rechercherUnMediaParNoProduit()	
 }

@@ -23,20 +23,12 @@ class VueOeuvre {
 		echo '<button id="grille" >Grille</button>
 			<button  id="liste" >Liste</button>
 		';
-	/*	echo '<ul>
-			<li><a href="index.php?page=mes-oeuvres&mode=grille" id="grille">Grille</a></li>
-			<li><a href="index.php?page=mes-oeuvres&mode=liste" id="liste">Liste</a></li>
-			</ul>';*/
-		
-		
-		
+			
 		echo "<article id=\"aa\" class=\"col-md-12 affichage clearfix\">";
-		
-		
 			echo "<section class=\"col-sm-6 col-md-3 \">";
 				echo '
 					
-					<form action="index.php?page=mes-oeuvres&mode=grille" method="post">
+					<form action="index.php?page=encheres&mode=grille" method="POST">
 							<fieldset>
 								<legend>Rechercher des oeuvres</legend>
 								
@@ -45,22 +37,34 @@ class VueOeuvre {
 								<input type="reset" name="cmd" value="RAZ">
 							</fieldset>
 						</form>
-					';
-
-				echo '
-					<select name="theme">
-						<option>Classique</option>
-						<option>Moderne</option>
-						<option>Abstrait</option>
-					</select>
-				';
+					';			
 				
-				echo '
-					<select name="technique">
-						<option>Acrylique</option>
-						<option>Peinture à l\'huile</option>				
-					</select>
-				';
+				echo '<br/>';
+				
+				echo '<h2>Theme</h2>';
+				echo '	<form action="index.php?page=encheres&mode=grille" method="POST">';	
+				
+				echo '	
+							<input type="radio" name="theme" value="1">classique<br/>
+							<input type="radio" name="theme" value="2">moderne<br/>						
+							<input type="radio" name="theme" value="3">abstrait<br/>		
+							<input type="radio" name="theme" value="4">mixte<br/>';
+				echo '<br/>';			
+				
+				echo '<h2>Technique</h2>';
+										
+				echo'		<input type="radio" name="technique" value="1">acrylique<br/>
+							<input type="radio" name="technique" value="2">peinture a l\'huile<br/>
+							<input type="radio" name="technique" value="3">gouache<br/>
+							<input type="radio" name="technique" value="4">aquarelle<br/>
+							<input type="radio" name="technique" value="5">mixte<br/>';
+				
+				echo '<br/>';	
+				
+				echo'		<input type="submit" name="rech" value="Rechercher">
+						
+						</form>';
+								
 			echo "</section>";
 	
 	/**	
@@ -69,7 +73,7 @@ class VueOeuvre {
 	 * @param Oeuvre $oOeuvre
 	 */	
 		echo "<section class=\"col-sm-6 col-md-9 \">";		
-		echo "<a href=\"index.php?page=mes-oeuvres\">Retour</a>";
+		echo "<a href=\"index.php?page=encheres\">Retour</a>";
 		echo"<article class=\"row grille text-center\">";
 		
 		if($aOeuvres!=0)

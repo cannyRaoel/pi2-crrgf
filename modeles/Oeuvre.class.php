@@ -1,6 +1,7 @@
 ﻿<?php
 require_once("Theme.class.php");
 require_once("Technique.class.php");
+require_once ("Utilisateur.class.php");
 require_once("../libs/MySqliLib.class.php");
 require_once("../libs/TypeException.class.php");
 require_once("../libs/MySqliException.class.php");
@@ -17,10 +18,11 @@ class Oeuvre{
 	
 	/* Propriété traduisant la relation d'association entre Oeuvre et Theme,Oeuvre et Technique*/
 	private $oTheme;
-	private $oTechnique;	
+	private $oTechnique;
+	private $oUtilisateur;
 	
 	public function __construct($idOeuvre = 0, $sNomOeuvre= " ", $sUrlOeuvre=" ",
-	$sDescriptionOeuvre=" ",$sDimensionOeuvre=" ",$iPoidsOeuvre=0,$sDateCreationOeuvre=" ",$sEtatOeuvre="En cours", $sNomTheme=" ",$sNomTechnique=" ")
+	$sDescriptionOeuvre=" ",$sDimensionOeuvre=" ",$iPoidsOeuvre=0,$sDateCreationOeuvre=" ",$sEtatOeuvre="En vente", $sNomTheme=" ",$sNomTechnique=" ",$sNomUtilisateur=" ")
 	{
 	
 		$this->setIdOeuvre($idOeuvre);
@@ -39,6 +41,10 @@ class Oeuvre{
 		//Rechercher la technique associé à cet oeuvre
 		$this->oTechnique = new Technique();
 		$this->oTechnique->setNomTechnique($sNomTechnique);
+		
+		//Rechercher la technique associé à cet oeuvre
+		$this->oUtilisateur = new Utilisateur();
+		$this->oUtilisateur->setNomUtilisateur($sNomUtilisateur);
 	}		
 		
 	/**************LES SET******************/
@@ -96,7 +102,7 @@ class Oeuvre{
 		TypeException::estVide($sEtatOeuvre);
 		TypeException::estString($sEtatOeuvre);
 		
-		$aEtatOeuvres = array("En cours", "Ferme");
+		$aEtatOeuvres = array("En vente", "En attente");
 		if (in_array($sEtatOeuvre, $aEtatOeuvres) == false) {
 			throw new TypeException(get_class($this)." :: Le paramètre n'est pas une catégorie acceptable - ".$sEtatOeuvre);	
 		}
@@ -113,7 +119,11 @@ class Oeuvre{
 		$this->oTechnique = $oTechnique;
 	}//fin de la fonction setTechnique()	
 		
-		
+	public function setUtilisateur(Utilisateur $oUtilisateur)
+	{
+		$this->oUtilisateur = $oUtilisateur;
+	}//fin de la fonction setUtilisateur()	
+	
 	/**************LES GET******************/
 	public function getIdOeuvre()
 	{
@@ -166,21 +176,25 @@ class Oeuvre{
 		return  htmlentities ($this->oTechnique->getNomTechnique());
 	}//fin de la fonction getTechnique()
 	
-		
+	public function getUtilisateur()
+	{
+		return  htmlentities ($this->oUtilisateur->getNomUtilisateur());
+	}//fin de la fonction getUtilisateur()	
+	
 	/***************LES METHODES*************************/
 	
 	/**
 	 * Rechercher tous les oeuvres de la base de données
 	 * @return array ce tableau contient des objets oeuvres
 	 */
-	 public static function rechercherListeDesOeuvres(){
+	 public static function rechercherListeDesOeuvresEnVente(){
 	 
 	 	//Connexion à la base de données
 	 	$oConnexion = new MySqliLib();
 	 	//Requête de recherche de tous les oeuvres
 	 	$sRequete = "
-	 		SELECT idOeuvre,nomOeuvre,urlOeuvre,descriptionOeuvre,dimensionOeuvre,poidsOeuvre,dateCreationOeuvre,etatOeuvre,nomTechnique,nomTheme FROM oeuvres LEFT JOIN (techniques,themes)
-            ON (techniques.idTechnique=oeuvres.idTechnique AND themes.idTheme=oeuvres.idTheme)
+	 		SELECT idOeuvre,nomOeuvre,urlOeuvre,descriptionOeuvre,dimensionOeuvre,poidsOeuvre,dateCreationOeuvre,etatOeuvre,nomTechnique,nomTheme FROM pi2_oeuvres LEFT JOIN (pi2_techniques,pi2_themes)
+            ON (pi2_techniques.idTechnique=pi2_oeuvres.idTechnique AND pi2_themes.idTheme=pi2_oeuvres.idTheme) WHERE etatOeuvre=\"En vente\"
 	 	";
 		
 		//echo $sRequete;
@@ -214,8 +228,8 @@ class Oeuvre{
 	
 	/**
 	 * Permet de rechercher des oeuvres à partir d'un mot clé
-	 * @return boolean true si on trouve des oeuvres
-	 * soit false s'il n'y a aucune oeuvre
+	 * @return boolean true si on trouve des oeuvres et @return un tableau des oeuvres	 
+	 * soit false s'il n'y a aucune oeuvre	
 	 */
 	
 	public static function rechercherDesOeuvresParMotCle($resultat){		
@@ -223,12 +237,12 @@ class Oeuvre{
 		$oConnexion = new MySqliLib();
 		//Réaliser la requête de recherche des oeuvres par mot clé
 		
-	$sRequete = "SELECT idOeuvre,nomOeuvre,urlOeuvre,descriptionOeuvre,dimensionOeuvre,poidsOeuvre,dateCreationOeuvre,etatOeuvre,nomTechnique,nomTheme FROM oeuvres LEFT JOIN (techniques,themes)ON (techniques.idTechnique=oeuvres.idTechnique AND themes.idTheme=oeuvres.idTheme) 
-	WHERE (nomOeuvre LIKE '%". $resultat.
-					"%' OR descriptionOeuvre LIKE '%". $resultat.
-					"%' OR nomTheme LIKE '%". $resultat.
-					"%' OR nomTechnique LIKE '%". $resultat."%') AND etatOeuvre=\"En cours\";		
-	";
+		$sRequete = "SELECT idOeuvre,nomOeuvre,urlOeuvre,descriptionOeuvre,dimensionOeuvre,poidsOeuvre,dateCreationOeuvre,etatOeuvre,nomTechnique,nomTheme FROM pi2_oeuvres LEFT JOIN (pi2_techniques,pi2_themes)ON (pi2_techniques.idTechnique=pi2_oeuvres.idTechnique AND pi2_themes.idTheme=pi2_oeuvres.idTheme) 
+		WHERE (nomOeuvre LIKE '%". $resultat.
+						"%' OR descriptionOeuvre LIKE '%". $resultat.
+						"%' OR nomTheme LIKE '%". $resultat.
+						"%' OR nomTechnique LIKE '%". $resultat."%') AND etatOeuvre=\"En vente\";		
+		";
 
 		
 		//echo $sRequete;
@@ -255,22 +269,24 @@ class Oeuvre{
 			return $aOeuvres;			
 		}	
 			return $bRechercher;
-	 }//fin de la fonction rechercherDesOeuvresParMotCle()	
+	 }//fin de la fonction rechercherDesOeuvresParMotCle()		
 	
 	
 	
 	/**
-	 * Permet de rechercher des oeuvres par NomTheme, NomTechnique, NomTon, Etat="En cours"	
-	 * @return boolean true si on trouve des oeuvres
-	 * soit false s'il n'y a aucune oeuvre
-	 */
-/*	public function rechercherDesOeuvres()
+	* Permet de rechercher des oeuvres par NomTheme ET NomTechnique (avec un Etat="En vente")
+	* @retour un tableau des oeuvres
+	*/
+	public function rechercherParThemeTechnique($nomTheme,$nomTechnique)
 	{		
 		//Connecter à la base de données
 		$oConnexion = new MySqliLib();
-		//Réaliser la requête de recherche des oeuvres par NomTheme, NomTechnique, NomTon, Etat="En cours"	
+		//Réaliser la requête de recherche des oeuvres par NomTheme ET NomTechnique, Etat="En vente"	
 		
-		$sRequete = "SELECT * FROM oeuvres WHERE NomTheme=".$this->getNomTheme()."AND NomTechnique=".$this->getNomTechnique()."AND NomTon=".$this->getNomTon()."AND EtatOeuvre=\"En cours\"";
+		$sRequete = "SELECT idOeuvre,nomOeuvre,urlOeuvre,descriptionOeuvre,dimensionOeuvre,poidsOeuvre,dateCreationOeuvre,etatOeuvre,nomTechnique,nomTheme FROM pi2_oeuvres LEFT JOIN (pi2_techniques,pi2_themes)ON (pi2_techniques.idTechnique=pi2_oeuvres.idTechnique AND pi2_themes.idTheme=pi2_oeuvres.idTheme) WHERE nomTheme=\"".$nomTheme."\" AND nomTechnique=\"".$nomTechnique."\" AND etatOeuvre=\"En vente\";
+		";
+		
+		//echo $sRequete;
 		
 		//Exécuter la requête
 		$oResult = $oConnexion->executer($sRequete);
@@ -281,15 +297,48 @@ class Oeuvre{
 		for($iEnreg=0; $iEnreg<count($aEnreg);$iEnreg++ )
 		{
 			//affecter un objet à un élément du tableau
-			$aOeuvres[$iEnreg]=new Oeuvre($aEnreg[$iEnreg]['idOeuvre'],$aEnreg[$iEnreg]['NomOeuvre'],$aEnreg[$iEnreg]['URLOeuvre'],$aEnreg[$iEnreg]['DescriptionOeuvre'],$aEnreg[$iEnreg]['LargeurOeuvre'],$aEnreg[$iEnreg]['HauteurOeuvre'],$aEnreg[$iEnreg]['PoidsOeuvre'],$aEnreg[$iEnreg]['DateCreationOeuvre'],$aEnreg[$iEnreg]['EtatOeuvre']);
+			$aOeuvres[$iEnreg]=new Oeuvre($aEnreg[$iEnreg]['idOeuvre'],$aEnreg[$iEnreg]['nomOeuvre'],$aEnreg[$iEnreg]['urlOeuvre'],$aEnreg[$iEnreg]['descriptionOeuvre'],$aEnreg[$iEnreg]['dimensionOeuvre'],$aEnreg[$iEnreg]['poidsOeuvre'],$aEnreg[$iEnreg]['dateCreationOeuvre'],$aEnreg[$iEnreg]['etatOeuvre'],$aEnreg[$iEnreg]['nomTheme'],$aEnreg[$iEnreg]['nomTechnique']);
 		}			
 		//retourner le tableau d'objets
 		return $aOeuvres;
-	}//fin de la fonction rechercherDesOeuvres() */
 	
-	
-	
-}		
+	}
+
+	/**
+	* Permet de rechercher des oeuvres si l'internaute choisi un des critères: NomTheme OU NomTechnique (avec un Etat="En vente")
+	* @retour un tableau des oeuvres
+	*/
+
+	public function rechercherParCritere($critere,$categorie)
+	{		
+		//Connecter à la base de données
+		$oConnexion = new MySqliLib();
+		//Réaliser la requête de recherche des oeuvres par NomTheme, NomTechnique, Etat="En cours"	
 		
+		if ($categorie=='theme')
+		{
+		$sRequete = "SELECT idOeuvre,nomOeuvre,urlOeuvre,descriptionOeuvre,dimensionOeuvre,poidsOeuvre,dateCreationOeuvre,etatOeuvre,nomTechnique,nomTheme FROM pi2_oeuvres LEFT JOIN (pi2_techniques,pi2_themes)ON (pi2_techniques.idTechnique=pi2_oeuvres.idTechnique AND pi2_themes.idTheme=pi2_oeuvres.idTheme) WHERE nomTheme=\"".$critere."\" AND etatOeuvre=\"En vente\";
+		";
+		} else
+		
+		$sRequete = "SELECT idOeuvre,nomOeuvre,urlOeuvre,descriptionOeuvre,dimensionOeuvre,poidsOeuvre,dateCreationOeuvre,etatOeuvre,nomTechnique,nomTheme FROM pi2_oeuvres LEFT JOIN (pi2_techniques,pi2_themes)ON (pi2_techniques.idTechnique=pi2_oeuvres.idTechnique AND pi2_themes.idTheme=pi2_oeuvres.idTheme) WHERE nomTechnique=\"".$critere."\" AND etatOeuvre=\"En vente\";
+		";		
+		//echo $sRequete;
+		
+		//Exécuter la requête
+		$oResult = $oConnexion->executer($sRequete);
+		//Récupérer le tableau des enregistrements s'il existe
+		$aEnreg = $oConnexion->recupererTableau($oResult);
+		
+		$aOeuvres=array();		
+		for($iEnreg=0; $iEnreg<count($aEnreg);$iEnreg++ )
+		{
+			//affecter un objet à un élément du tableau
+			$aOeuvres[$iEnreg]=new Oeuvre($aEnreg[$iEnreg]['idOeuvre'],$aEnreg[$iEnreg]['nomOeuvre'],$aEnreg[$iEnreg]['urlOeuvre'],$aEnreg[$iEnreg]['descriptionOeuvre'],$aEnreg[$iEnreg]['dimensionOeuvre'],$aEnreg[$iEnreg]['poidsOeuvre'],$aEnreg[$iEnreg]['dateCreationOeuvre'],$aEnreg[$iEnreg]['etatOeuvre'],$aEnreg[$iEnreg]['nomTheme'],$aEnreg[$iEnreg]['nomTechnique']);
+		}			
+		//retourner le tableau d'objets
+		return $aOeuvres;	
+	}	
 	
+	}
 	?>
