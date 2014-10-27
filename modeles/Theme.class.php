@@ -45,7 +45,7 @@ public function __construct($idTheme=0, $sNomTheme=" ")
 		//Connecter à la base de données
 		$oConnexion = new MySqliLib();
 		//Réaliser la requête de recherche d'un nom de technique par son ID
-		$sRequete = "SELECT nomTheme FROM pi2_themes WHERE idTheme=".$this->idTheme.";
+		$sRequete = "SELECT nom FROM pi2_themes WHERE id=".$this->idTheme.";
 		";
 		//echo $sRequete;
 		//Exécuter la requête
@@ -57,7 +57,7 @@ public function __construct($idTheme=0, $sNomTheme=" ")
 			//Affecter les propriétés de l'objet en cours avec les valeurs
 			
 			//$this->setIdTheme($aThemes[0]['idTheme']);
-			$this->setNomTheme($aThemes[0]['nomTheme']);
+			$this->setNomTheme($aThemes[0]['nom']);
 			
 			$bRechercherTheme=true;	
 		}

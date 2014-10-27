@@ -1,0 +1,106 @@
+
+
+ALTER TABLE pi2_oeuvres ADD CONSTRAINT fk_pi2_oeuvres_technique_id FOREIGN KEY (technique_id) references pi2_techniques (id) ON DELETE CASCADE;
+
+ALTER TABLE pi2_oeuvres ADD CONSTRAINT fk_pi2_oeuvres_theme_id FOREIGN KEY (theme_id) references pi2_themes (theme_id) ON DELETE CASCADE;
+
+ALTER TABLE pi2_oeuvres ADD CONSTRAINT fk_pi2_oeuvres_utilisateur_id FOREIGN KEY (utilisateur_id) references pi2_utilisateurs (utilisateur_id) ON DELETE CASCADE;
+
+
+
+
+
+
+
+
+
+Pour selectionner tout
+
+SELECT pi2_oeuvres.id,titre,description,prix,dimension,poids,mediaUrl,etat,pi2_techniques.nom,pi2_themes.nom FROM pi2_oeuvres
+			LEFT JOIN (pi2_techniques,pi2_themes) ON (pi2_techniques.id=pi2_oeuvres.technique_id AND pi2_themes.id=pi2_oeuvres.theme_id)
+			WHERE etat='en enchere';
+
+SELECT pi2_oeuvres.id,titre,description,prix,dimension,poids,mediaUrl,etat,pi2_techniques.nom,pi2_themes.nom 
+FROM pi2_Oeuvres LEFT JOIN (pi2_techniques,pi2_themes) 
+ON (pi2_techniques.id=pi2_oeuvres.technique_id AND pi2_themes.id=pi2_oeuvres.theme_id) 
+WHERE (titre LIKE '%nuit%' OR description LIKE '%nuit%' OR pi2_Themes.nom LIKE '%nuit%' OR pi2_Techniques.nom LIKE '%nuit%') AND etat="en enchere"
+
+
+SELECT pi2_oeuvres.id,titre,description,prix,dimension,poids,mediaUrl,etat,pi2_techniques.nom,pi2_Themes.nom FROM pi2_Oeuvres
+LEFT JOIN (pi2_techniques,pi2_themes) ON (pi2_techniques.id=pi2_oeuvres.technique_id AND pi2_themes.id=pi2_oeuvres.theme_id) 
+WHERE pi2_Themes.nom=\"".$nomTheme."\" AND pi2_techniques.nom=\"".$nomTechnique."\" AND etat=\"en enchere\";
+
+
+SELECT pi2_oeuvres.id,titre,description,prix,dimension,poids,mediaUrl,etat,pi2_techniques.nom,pi2_Themes.nom FROM pi2_Oeuvres
+LEFT JOIN (pi2_techniques,pi2_themes) ON (pi2_techniques.id=pi2_oeuvres.technique_id AND pi2_themes.id=pi2_oeuvres.theme_id) 
+WHERE pi2_themes.nom=\"".$critere."\" AND etat=\"en enchere\";
+
+SELECT pi2_oeuvres.id,titre,description,prix,dimension,poids,mediaUrl,etat,pi2_techniques.nom,pi2_Themes.nom FROM pi2_Oeuvres
+LEFT JOIN (pi2_techniques,pi2_themes) ON (pi2_techniques.id=pi2_oeuvres.technique_id AND pi2_themes.id=pi2_oeuvres.theme_id) 
+WHERE pi2_techniques.nom=\"".$critere."\" AND etat=\"en enchere\";
+
+1
+Douceur de la nuit
+../medias/douceurNuit.jpg
+Quae et sororem cum existimabat maritus ad suam so...
+70x140
+300
+2014-01-02
+En vente
+1
+2
+1
+
+
+2
+Faune et Flore
+../medias/fauneFlore.jpg
+Se est cum verbum legant Latinas qui Latinas verbu...
+80x130
+200
+2008-06-13
+En attente
+2
+4
+2
+
+
+3
+Faune et Flore
+../medias/fauneFlore.jpg
+Latinas verbum scripta Se est cum verbum legant La...
+80x130
+200
+2008-06-13
+En vente
+4
+4
+2
+
+
+4
+Douceur de la nuit
+../medias/douceurNuit.jpg
+sororem cum existimabat maritus ad suam so...
+70x140
+150
+1999-01-14
+En vente
+3
+2
+1
+
+
+5
+Faune et Flore
+../medias/fauneFlore.jpg
+Se est cum verbum legant Latinas qui Latinas verbu...
+70x140
+200
+2008-11-13
+En vente
+1
+3
+2
+
+

@@ -23,7 +23,7 @@ class Modeles extends Connexion{
 
 		$sSQL = "SELECT * FROM ".$sNomTable.";";
 
-		$requete = $this->oPDO->prepare($sSQL);
+		$requete = $oPDO->prepare($sSQL);
 
 		if ( $requete->execute() ) {
 
@@ -31,13 +31,16 @@ class Modeles extends Connexion{
 
 				$aResultats = $requete->fetchAll();
 
-			}
+			} else {
 
-			return $aResultats;
+				//$sMsg = array('type'=>'warning', 'msg'=>'Aucune donnees de disponible pour le moment');
+
+			}
 
 		} else {
 
-			throw new Exception(ERR_REQUEST);
+			throw new Exception("Erreur lors de la requete");
+			//$sMsg = array('type'=>'danger', 'msg'=>'Erreur lors de la requete.');
 
 		}
 

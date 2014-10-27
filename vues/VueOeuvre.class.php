@@ -28,7 +28,7 @@ class VueOeuvre {
 			echo "<section class=\"col-sm-6 col-md-3 \">";
 				echo '
 					
-					<form action="index.php?page=mes-encheres&mode=grille" method="POST">
+					<form action="index.php?page=mes-oeuvres&mode=grille" method="POST">
 							<fieldset>
 								<legend>Rechercher des oeuvres</legend>
 								
@@ -42,7 +42,7 @@ class VueOeuvre {
 				echo '<br/>';
 				
 				echo '<h2>Theme</h2>';
-				echo '	<form action="index.php?page=encheres&mode=grille" method="POST">';	
+				echo '	<form action="index.php?page=mes-oeuvres&mode=grille" method="POST">';	
 				
 				echo '	
 							<input type="radio" name="theme" value="1">classique<br/>
@@ -73,7 +73,7 @@ class VueOeuvre {
 	 * @param Oeuvre $oOeuvre
 	 */	
 		echo "<section class=\"col-sm-6 col-md-9 \">";		
-		echo "<a href=\"index.php?page=encheres\">Retour</a>";
+		echo "<a href=\"index.php?page=mes-oeuvres\">Retour</a>";
 		echo"<article class=\"row grille text-center\">";
 		
 		if($aOeuvres!=0)
@@ -85,7 +85,7 @@ class VueOeuvre {
 								<span class='apparent'>
 								<img class=\"\" src=\"".$oOeuvre->getUrlOeuvre()."\" alt=\"Photos des tableaux\" >
 								<h2>".$oOeuvre->getNomOeuvre()."</h2>
-								<button>Enchérir</button>
+								<a href=\"index.php?page=detailEnchere&idOeuvre=".$oOeuvre->getIdOeuvre()."\"><button>Enchérir</button></a>
 								
 								</span>
 								
@@ -95,13 +95,14 @@ class VueOeuvre {
 										<td>
 											<img class=\"\" src=\"".$oOeuvre->getUrlOeuvre()."\" alt=\"Photos des tableaux\" >
 											<h2>".$oOeuvre->getNomOeuvre()."</h2>
-											<button>Enchérir</button>
+											<a href=\"index.php?page=detailEnchere&idOeuvre=".$oOeuvre->getIdOeuvre()."\"><button>Enchérir</button></a>
 										</td>
 										<td>
-											Technique: ".$oOeuvre->getTechnique()."<br/>
+											Technique: ".$oOeuvre->getTechnique()."<br/>											
 											Theme: ".$oOeuvre->getTheme()."<br/>
-											Dimension: ".$oOeuvre->getDimensionOeuvre()."pi <br/>
+											Dimension: ".$oOeuvre->getDimensionOeuvre()."po <br/>
 											Poids: ".$oOeuvre->getPoidsOeuvre()."lb
+											
 										</td>
 									</tr>
 								</table>
@@ -109,6 +110,7 @@ class VueOeuvre {
 					
 			}//fin du foreach 	
 		
+		 
 		}else
 			{
 				echo "<div class=\"col-md-12\">

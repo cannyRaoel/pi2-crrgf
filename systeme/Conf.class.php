@@ -13,7 +13,7 @@ class Conf {
 	static $aBaseDonnees = array(
 		"defaut" => array(
 			"hote"        => "localhost",
-			"bd"          => "bd_pi2",
+			"bd"          => "pi2",
 			"utilisateur" => "root",
 			"motDePasse"  => "",
 		),

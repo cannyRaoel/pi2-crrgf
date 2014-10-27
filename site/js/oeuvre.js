@@ -21,7 +21,7 @@ $(document).ready(function()
 	console.log("grille");
 	//document.location="../index.php?page=mes-oeuvres&mode=grille";
 		$('#aa').removeClass("liste grille").addClass("grille");//enlève la classe liste et ajoute la classe grille		
-		$('#aa article.row div').removeClass().addClass("col-md-4");
+		$('#aa article.row div').removeClass("col-md-12").addClass("col-md-4");
 	});
 	
  });

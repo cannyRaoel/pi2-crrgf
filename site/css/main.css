@@ -39,26 +39,21 @@ h1, h2, h3{
 	background-color: #464647;
 }
 
-/** Formulaire de recherche **/
+/** Navigation **/
 .navbar-form{
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
 
-/** Menu burger **/
+nav .navbar-menu{
+	border-top: solid 1px #CCC;
+	border-bottom: solid 1px #CCC;
+}
 .navbar-toggle .icon-bar {
   background-color: white;
 }
 
-/** Navigation **/
-.navbar-menu{
-	border-top: solid 1px #CCC;
-	border-bottom: solid 1px #CCC;
-	background-color: #323b40;
-}
-
 .navbar{
-	min-height: 0;
 	margin-bottom: 0;
 	border: 0 none transparent;
 }
@@ -67,17 +62,12 @@ h1, h2, h3{
 	color: #CCC;
 }
 
-.navbar a:hover{
-	color: #FFA500;
-}
-
-.navbar a > img{
-	padding: 10px 0;
-	display: inline;
-}
-
 .navbar-nav >li >a{
 	text-shadow: 0 0 0 transparent;
+}
+
+.navbar a:hover{
+	color: #FFA500;
 }
 
 .nav >li >a:hover, .nav >li >a:focus{
@@ -90,6 +80,15 @@ h1, h2, h3{
 	background-color: #333333;
 }
 
+.navbar a > img{
+	padding: 10px 0;
+	display: inline;
+}
+
+.navbar-menu{
+	background-color: #323b40;
+}
+
 .dropdown-menu{
 	background-color: #323b40;
 }
@@ -99,7 +98,7 @@ h1, h2, h3{
 }
 
 /** Carousel **/
-#carousel{
+#carousel-tableau{
 	background-color: rgb(201, 212, 218);
 }
 
@@ -120,41 +119,21 @@ h1, h2, h3{
 }
 
 /** Contenu **/
-article header p{
+main section header p{
 	font-style: italic;
 }
 
-article header p:before{
+main section header p:before{
 	content: open-quote;
 }
 
-article header p:after{
+main section header p:after{
 	content: close-quote;
-}
-
-/** Echeres derniere minute **/
-.derniere-minute{
-	background-image: url(../img/fond-rayures_fonces.png);
-}
-
-.derniere-minute h1{
-	padding-bottom: 10px;
-	color: #CCC;
-	border-bottom: 1px solid #CCC;
-}
-
-.derniere-minute h1 span{
-	font-size: 75%;
-}
-
-.derniere-minute li{
-	margin: 20px 0;
 }
 
 /** Pied de page **/
 footer{
 	padding: 20px 0;
-	border-top: 1px solid #CCC;
 }
 
 footer section:not(:last-child) li{
@@ -196,18 +175,18 @@ footer .droits{
 	padding: 50px 0;
 }
 
-.a-propos, .notre-engagement{
+.le-site, .engagement{
 	background-size: 100% 100%;
 }
 
-.a-propos{
+.le-site{
 	background-image: url('../img/fond-peinture1.jpg');
 }
 
-.fonctionnalites{
+.compatibilite{
 	background-color: #FFA500;
 }
 
-.notre-engagement{
+.engagement{
 	background-image: url('../img/fond-peinture3.jpg');
 }

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+	<!--<![endif]-->
+	<head>
+		<base href="../">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.css">
+		<link rel="stylesheet" href="css/main.css">
+		<script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	</head>
+	<body>
+		<!--[if lt IE 7]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser.
+		Please
+		<a href="http://browsehappy.com/">upgrade your browser</a> to improve your
+		experience.</p>
+		<![endif]-->
+		<!-- ------Entête de la page--------- -->
+
+		<!-- ------ Navigation / Menu--------- -->
+    <article class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+        <!-- --------------LOGO------------------ -->
+        <article class="row logo">
+            <article class="col-md-4 col-sm-6 col-xs-12">
+                <a href="index.html">
+                    <img src="images/Logo Arts aux encheres.svg" alt="Logo Arts aux enchères">
+                </a>
+            </article>
+
+            <!-- --------------Zone Rechercher------------------ -->
+            <article class="col-md-3 col-xs-12"></article>
+            <article class="col-md-4">
+                <form action="#" method="post" class="form-inline" role="form">
+                    <div class="form-group">
+                        <input type="text" placeholder="peu importe" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn-default btn">Rechercher</button>
+                    </div>
+                </form>
+            </article>
+            <article class="col-md-1 col-xs-12"></article>
+        </article>
+        <!-- -------------- Menu ------------------ -->
+        <article class="row menu">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse menuBloc">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="pages/Nos_encheres.html">Nos enchères</a>
+                        </li>
+                        <li>
+                            <a href="pages/Liste_Artistes.html">Artistes</a>
+                        </li>
+                        <li>
+                            <a href="pages/Contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="connexionBloc">
+                    <ul class="nav navbar-nav">
+                    <li><a href="pages/formulaire_login.html">Se connecter |</a></li>
+                    <li><a href="pages/formulaire_inscription.html">S'inscrire</a></li>
+                </ul>
+                </div>
+            </div>
+        </article>
+    </article>
+    <!-- ------ Fin Navigation / Menu--------- -->
+
+		<!-- container -->
+		<main>
+			<!-- Débue page Nos_enchéres-->
+			<article id="container_enchere" >
+
+				<article class="col-md-3 col-sm-12 pull-left recherche_Vertical" >
+
+			   <!-- Début zone recherche vertical -->
+				  <article class="col-md-3 "></article>
+					<form action="#" method="post" >
+			   	
+			   		<!-- recherche :par texte -->
+						<label ></label>
+						 <article class="input-group clearfix ">
+							<input type="search" class="form-control" placeholder="Mots-clés" >
+						 </article>
+					 
+					 <!-- recherche par Prix -->
+					  <label for="Prix">Prix</label>
+					   <article class="input-group  clearfix ">
+							  <select  name="prix">
+								<option selected value="leonardo da vinci">Tout</option>
+								<option value="Penture à huile">Ascendant</option>
+								<option value="Acrylique">Descendant</option>								
+							 </select>
+						 </article>
+					 
+					 
+					 
+					  <!-- recherche par Type -->
+					   <label>Types</label>
+						 <article class="input-group  clearfix ">
+							 <select  name="types">
+								<option selected value="leonardo da vinci">Tout</option>
+								<option value="Abstrait">Abstrait </option>
+								<option value="leonardo da vinci">Classique</option>
+								<option value="Joan Miró"> Moderne </option>
+							 </select>
+						 </article>
+						 
+					  <!-- recherche par:Technique -->
+						<label >Techniques</label>
+						 <article class="input-group  clearfix ">
+							  <select  name="Techniques">
+								<option selected value="leonardo da vinci">Tout</option>
+								<option value="Penture à huile">Penture à huile</option>
+								<option value="Acrylique">Acrylique</option>
+								<option value="Dessin"> Dessin </option>
+								<option value="Dessin">Collage </option>
+							 </select>
+						 </article>				 
+					  
+						
+						<!-- recherche par Taille -->
+					  <label for="Taille">Tailles</label>
+					   <article class="input-group  clearfix ">
+							  <select  name="tailles">
+								<option selected value="leonardo da vinci">Tout</option>
+								<option value="Penture à huile">Petite</option>
+								<option  value="Acrylique">Moyenne</option>
+								<option  value="Acrylique">Grande</option>
+							 </select>
+						 </article>
+						
+						<!-- recherche par Taille -->
+					  <label for="Gamme">Tons</label>
+					   <article class="input-group  clearfix ">
+							  <select  name="gammes">
+								<option selected value="leonardo da vinci">Tout</option>
+								<option value="Penture à huile">Chaude</option>
+								<option  value="Acrylique">Froide</option>
+								<option  value="Acrylique">Neutre</option>
+							 </select>
+						 </article>
+					
+					 <!-- recherche :enchère ou pas enchère -->
+						 
+						 <label>Artistes</label>
+						 <article class="input-group  clearfix ">
+							 <select  name="mesTableaux">
+								<option value="leonardo da vinci">Tout</option>
+								<option value="Abstrait">François De SAUZEA</option>
+								<option value="leonardo da vinci">COLETTE</option>
+								<option value="Abstrait">Daphné ROY</option>
+								<option value="leonardo da vinci">Jeff WAGNER</option>											
+							 </select>
+						 </article>
+
+					
+					  <button type="submit" class="btn btn-primary">
+						 Rechercher
+					  </button>
+				   </form>
+			   <!-- Fin Form de recherche -->
+			   
+			</article>
+
+				<!-- Débue des vignettes des tableaux -->
+				<article class="col-md-9 " id="Vignettes">
+					<article class="row">
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/calligraphie-arabe-L-King.jpg" alt="calligraphie-arabe">
+								<div class="caption">
+									<a href="detaille_enchere.html" ><h4>Calligraphie Arabe</h4></a>
+									<p>
+										<span >200,00 $CAD</span> 2 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/Edgar Degas .jpg" alt="Edgar Degas">
+								<div class="caption">
+									<a href="pages/detailEnchere.html" ><h4>Edgar Degas</h4></a>
+									<p>
+										<span>3050,00 $CAD</span> 3 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/L'Oreille de Van Gogh_1889.jpg" alt="L'Oreille de Van Gogh">
+								<div class="caption">
+									<a href="pages/detailEnchere.html" ><h4>L'Oreille de Van</h4></a>
+									<p>
+										<span>4000,00 $CAD</span> 8 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/picasso_girl_mirror_postcard_1.jpg" alt="picasso">
+								<div class="caption">
+									<a href="pages/detailEnchere.html" ><h4>Picassoe</h4></a>
+									<p>
+										<span>700,00 $CAD</span> 2 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/picasso_two_saltimbanques_postcard_1.jpg" alt="...">
+								<div class="caption">
+									<a href="pages/detailEnchere.html" ><h4>Les saltimbanques</h4></a>
+									<p>
+										<span>1200,00 $CAD</span> 21 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/calligraphie-arabe-L-King.jpg" alt="...">
+								<div class="caption">
+									<a href="pages/detailEnchere.html" ><h4>Calligraphie Arabe</h4></a>
+									<p>
+										<span>800,00 $CAD</span> 2 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/Edgar Degas .jpg" alt="Edgar Degas">
+								<div class="caption">
+									<a href="pages/detailEnchere.html" ><h4>Edgar Degas</h4></a>
+									<p>
+										<span>3050,00 $CAD</span> 3 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/calligraphie-arabe-L-King.jpg" alt="...">
+								<div class="caption">
+									<a href="pages/detailEnchere.html" ><h4>Calligraphie Arabe</h4></a>
+									<p>
+										<span>200,00 $CAD</span> 2 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/Edgar Degas .jpg" alt="Edgar Degas">
+								<div class="caption">
+									<a href="pages/detailEnchere.html" ><h4>Edgar Degas</h4></a>
+									<p>
+										<span>3050,00 $CAD</span> 3 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/picasso_two_saltimbanques_postcard_1.jpg" alt="...">
+								<div class="caption">
+									<a href="pages/detailEnchere.html" ><h4>Calligraphie Arabe</h4></a>
+									<p>
+										<span>1200,00 $CAD</span> 21 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/calligraphie-arabe-L-King.jpg" alt="...">
+								<div class="caption">
+									<a href="pages/detailEnchere.html" ><h4>Calligraphie Arabe</h4></a>
+									<p>
+										<span>150,00 $CAD</span> 2 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="images/Tableaux/Edgar Degas .jpg" alt="Edgar Degas">
+								<div class="caption">
+									<a href="pages/detailEnchere.html" ><h4>Edgar Degas</h4></a>
+									<p>
+										<span>3050,00 $CAD</span> 3 enchères
+									</p>
+									<p>
+										<a href="pages/detailEnchere.html" class="btn btn-default" role="button">Enchérir</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+					</article>
+				</article>
+				<!-- Fin des vignettes des tableaux -->
+
+				<p class="copy ">
+					&copy; Le contenu du site web est protégé par des lois canadiennes et étrangères sur le droit d'auteur et la propriété intellectuelle...
+				</p>
+		</main>
+		<!-- -------------Fin Main------------------->
+
+        <!-- -------------Début Footer------------------->
+        <footer>
+            <article class="row">
+                <article class="col-xs-12  col-md-4 pull-left">
+                    <ul>
+
+                        <li>
+                            <a href="pages/Liste_Artistes.html">Recherche un Artiste</a>
+                        </li>
+                        <li>
+                            <a href="pages/Nos_encheres.html"> Répertoire des œuvres en enchère</a>
+                        </li>
+                        <li>
+                            <a href="pages/Contact.html">Nous joindre</a>
+                        </li>
+                    </ul>
+                </article>
+                <article class="col-xs-12  col-md-4 pull-left">
+                    <ul>
+                        <li>
+                            <a href="pages/Politique_confidentialite.html"> Politique de confidentialité </a>
+                        </li>
+                        <li>
+                            <a href="pages/non_responsabilite.html"> Avis complet de non-responsabilité </a>
+                        </li>
+                        <li>
+                            <a href="pages/formulaire_login.html"> Connexion</a>
+                        </li>
+                    </ul>
+
+                </article>
+
+                <article class="col-xs-12 col-sm-6 col-md-4 ">
+                    <article class="col-xs-2 col-md-2  maidia_soc ">
+                        <p>
+                            <a href="https://www.facebook.com/skander.gader">
+                                <img src="images/facebook_logo.png" alt="logo facebook " width="60" height="35" />
+                            </a>
+                        </p>
+                    </article>
+                    <article class="col-xs-2 col-md-2  maidia_soc">
+                        <p>
+                            <a href="https://www.youtube.com/channel/UC2T0Ish3GMFzTRflE9bfIUQ">
+                                <img src="images/youtube1.png" alt="logo youtube" width="40" height="30" />
+                            </a>
+                        </p>
+                    </article>
+                    <article class=" col-xs-2 col-md-2  maidia_soc">
+                        <p>
+                            <a href="http://gader-eskander.blogspot.ca/2013_10_01_archive.html">
+                                <img src="images/blog_image.png" alt="logo youtube" width="40" height="30" />
+                            </a>
+                        </p>
+                    </article>
+                    <article class=" col-xs-12 ">
+                        <p>
+                            &copy; ARTS AUX ENCHÉRES 2014 .
+                        </p>
+                    </article>
+                </article>
+
+            </article>
+        </footer>
+        <!---------- fin Footer---------- -->
+
+		<!---------- fin container---------- -->
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script>
+			window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')
+		</script>
+		<script src="js/vendor/bootstrap.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/plugins.js"></script>
+		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+		<script>
+			( function(b, o, i, l, e, r) {
+					b.GoogleAnalyticsObject = l;
+					b[l] || (b[l] = function() {
+						(b[l].q = b[l].q || []).push(arguments)
+					});
+					b[l].l = +new Date;
+					e = o.createElement(i);
+					r = o.getElementsByTagName(i)[0];
+					e.src = '//www.google-analytics.com/analytics.js';
+					r.parentNode.insertBefore(e, r)
+				}(window, document, 'script', 'ga'));
+			ga('create', 'UA-XXXXX-X');
+			ga('send', 'pageview');
+		</script>
+	</body>
+</html>

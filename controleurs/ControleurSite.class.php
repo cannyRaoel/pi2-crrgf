@@ -48,7 +48,7 @@ class ControleurSite extends Controleur{
 				{
 					$aOeuvres=Oeuvre::rechercherListeDesOeuvresEnVente();
 					VueOeuvre::afficherLesOeuvres($aOeuvres);				
-				}else if(isset($_POST['cmd']))
+				 }else if(isset($_POST['cmd']))
 					{
 						//Récupérer le texte saisi par l'internaute $_POST['txt']
 						$recherche=$_POST['txt'];
@@ -68,7 +68,7 @@ class ControleurSite extends Controleur{
 								VueOeuvre::afficherLesOeuvres(0,"aucun produit ne correspond à votre recherche");
 							}						
 					
-					} else	if(isset($_POST['rech']))
+					 } else	if(isset($_POST['rech']))
 						{
 							//effectue la recherche si l'internaute a selectionné à la fois: theme ET technique
 							if (isset($_POST['theme'])==true && isset($_POST['technique'])==true)
