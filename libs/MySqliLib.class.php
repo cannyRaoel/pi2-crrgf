@@ -5,7 +5,7 @@
     	const HOST ="localhost";
 		const USER ="root";
 		const PWD="";
-		const BDD="artsauxencheres"; 
+		const BDD="bd_pi2"; 
     	
 		/** 
 		 * @var string
